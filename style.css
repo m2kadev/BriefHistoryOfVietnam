@@ -1,0 +1,515 @@
+@font-face {
+    font-family: 'SVN-Gratelos Display';
+    src: url('fonts/GratelosDisplay.ttf');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SVN-Gratelos Display';
+}
+
+.layer1 {
+    background: url(images/background1.png) no-repeat;
+}
+
+.layer2 {
+    background: url(images/price-bg1.png) no-repeat;
+}
+
+.layer3 {
+    background: url(images/timeline-bg.png) no-repeat;
+}
+
+
+
+
+.layer1, .layer2, .layer3 {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.item1 {
+    grid-column: 2 / 15;
+    grid-row: 1 / 2;
+}
+
+.item2 {
+    grid-row: 1 / 12;
+}
+
+.item3 {
+    grid-row: 2 / 12;
+    grid-column: 2 / 15;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active {
+    color: #C3423F !important;
+}
+
+.big-box {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 200px;
+    transform: scale(0);
+    transition: 0.3s ease-in-out;
+}
+
+.big-box .big-box-content {
+    width: 900px;
+    height: 95vh;
+    border: 1px solid #121212;
+    background: url(images/timeline-bg.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.img-box, .history-box {
+    width: 40%;
+}
+
+.history-box h1 {
+    color: #C3423F;
+    font-size: 3em;
+    font-weight: 400;
+    letter-spacing: 5px;
+    line-height: 88px;
+}
+
+.history-box > p {
+    font-family: 'Urbanist';
+    color: #fff;
+    font-weight: 400;
+    font-size: 1em;
+    padding: 20px 0;
+}
+
+
+
+.img-box img {
+    width: 100%;
+}
+
+#closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#closeBtn i {
+    font-size: 20px;
+    color: #fff;
+}
+
+
+
+/* ---------------- ITEM 1 ---------------- */
+
+/* Navigation */
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 50px;
+    align-items: center;
+    padding: 30px 12rem 30px 0;
+}
+
+.navbar li {
+    padding-left: 40px;
+    font-size: 1.5em;
+    font-weight: 400;
+    position: relative;
+}
+
+#history::after {
+    
+    content: "";
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    right: -15px;
+    top: 7px;
+
+    border-bottom: 3px solid #C3423F;
+    border-left: 3px solid #C3423F;
+    transform: rotate(225deg);
+    transition: 0.3s ease;
+}
+
+#history:hover::after{
+    transform: rotate(310deg);
+}
+
+.navbar li > .history-childs {
+    position: absolute;
+    z-index: 888;
+    /*
+    top: 60px; */
+    background-color: #C3423F;
+}
+
+.hideAnimation {
+    animation-name: hidechild;
+    animation-duration: 1s;
+    top: 300px;
+    left: 200px;
+    opacity: 0;
+
+}
+
+.showAnimation {
+    animation-name: showchild;
+    animation-duration: 1s;
+    top: 40px;
+    left: 30px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/*
+.showHistoryChilds {
+    
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: rotate(360deg) !important;
+    
+    top: 60px !important;
+    left: 30px !important; 
+    top: 60px;
+
+    animation-name: showchild;
+    animation-duration: 1s; 
+}
+*/
+
+
+@keyframes showchild {
+
+    0%{
+        left: 200px; 
+        top: 300px;
+        opacity: 0;
+    }
+
+    50% {
+        left: 30px;
+        top: 300px;
+        opacity: 0.8;
+    }
+
+    100%{
+        top: 40px;
+        left: 30px;
+        opacity: 1;
+        visibility: visible;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes hidechild {
+
+    0% {
+        left: 30px;
+        top: 40px;
+    }
+
+    50% {
+        left: 200px;
+        top: 60px;
+        opacity: 0.8;
+        transform: rotate(90deg);
+    }
+
+    100% {
+        top: 300px;
+        left: 200px;
+        opacity: 0;
+        visibility: hidden;
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+.navbar li > .history-childs::before {
+    content: "";
+    width: 20px;
+    height: 30px;
+    background-color: #C3423F;
+    top: -13px;
+    left: 12px;
+    position: absolute;
+    transform: rotate(230deg);
+}
+
+.history-childs li {
+        padding: 18px;
+        padding-top: 0 !important;
+        line-height: 1;
+        border-bottom: 1px solid #121212;
+
+}
+
+.history-childs li a {
+    color: #fff !important;
+    font-size: 16px;
+    font-family: 'Urbanist';
+    font-weight: bold;
+}
+
+.navbar li a {
+    color: #121212;
+}
+
+
+
+/* ------------------------ITEM 3 -----------------------*/
+
+/* text wrapper */
+
+.item3 {
+    position: relative;
+}
+
+#homePage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+    transition: 0.8s ease-out;
+
+}
+
+.showHomePage {
+    display: block;
+    transform: scale(1);
+}
+
+.text-wrapper {
+    max-width: 580px;
+    padding-left: 100px;
+    position: absolute;
+    z-index: 100;
+    top: 50px;
+    left: 0;
+}
+
+.text-wrapper h1{
+    color: #C3423F;
+    font-size: 6.2em;
+    font-weight: 400;
+    letter-spacing: 5px;
+    line-height: 88px;
+}
+
+.paragraph {
+    width: 65%;
+    margin-top: 50px;
+}
+
+.paragraph p {
+    margin-top: 20px;
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Urbanist';
+    font-size: 1rem;
+
+}
+
+/* Leader */
+
+.leader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leader-img {
+    width: 400px;
+    position: relative;
+    z-index: 99;
+}
+
+.leader-img::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: #C3423F;
+    right: -35px;
+    bottom: 0%;
+    border-radius: 50%;
+}
+
+.leader-img img {
+    width: 100%;
+}
+
+/* Grey Circle */
+
+.grey-circle {
+    position: absolute;
+    width: 100px;
+    right: 0;
+    bottom: 0;
+}
+
+.grey-circle img {
+    width: 100%;
+}
+
+/* Gold Circle */
+
+.gold-circle {
+    position: absolute;
+    width: 380px;
+    top: -100px;
+    left: 15%;
+    z-index: 1;
+}
+
+.gold-circle img {
+    width: 100%;
+}
+
+/* PRICE PAGE */
+
+#pricePage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+    transition: 0.8s ease-out;
+}
+
+
+#pricePage > .gold-circle {
+    left: 10%;
+    top: -150px;
+}
+
+.layout2-paragraph {
+    width: 700px;
+    padding-left: 50px;
+    z-index: 100 !important;
+    position: absolute;
+}
+
+.layout2-paragraph h1 {
+    color: #C3423F;
+    font-size: 6.2em;
+    font-weight: 400;
+    letter-spacing: 5px;
+    line-height: 88px;
+    z-index: 100;
+}
+
+.layout2-paragraph p {
+    margin-top: 20px;
+    color: #121212;
+    font-weight: 500;
+    font-family: 'Urbanist';
+    font-size: 1rem;
+}
+
+/* HISTORY TIMELINE */
+
+#historyTimeline {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    display: none;
+}
+
+.timeline-paragraph {
+    width: 700px;
+    padding-left: 50px;
+    position: absolute;
+    z-index: 100;
+}
+
+.timeline-paragraph h1 {
+    color: #C3423F;
+    font-size: 6.2em;
+    font-weight: 400;
+    letter-spacing: 5px;
+    line-height: 88px;
+}
+
+.timeline-paragraph img {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.grey-x-circle {
+    position: absolute;
+    width: 350px;
+    top: -150px;
+    left: 12%;
+    z-index: 1;
+}
+
+.grey-x-circle img {
+    width: 100%;
+}
+
+
+
+/* -------------------- ITEM 2 -------------------*/
+/* site logo */
+
+.item2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #121212;
+    padding-top: 20px;
+}
+
+.site-logo {
+    width: 64px;
+}
+
+.site-logo img {
+    width: 100%;
+}
+
